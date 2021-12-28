@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  mysql:
+    image: mariadb:10.5.8
+    ports:
+      - 3306:3306
+    mem_limit: 512m
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./docker/provision/mysql/init/01-databases.sql:/data/application/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: pismo
