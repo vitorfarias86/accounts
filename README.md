@@ -1,13 +1,18 @@
-# accounts Project
+# Accounts Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Documentation 
+
+This project use swagger/openapi specification
+http://localhost:8080/q/swagger-ui/
 
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
 ```shell script
+docker-compose up
 ./mvnw compile quarkus:dev
 ```
 
@@ -28,6 +33,19 @@ If you want to build an _über-jar_, execute the following command:
 ```
 
 The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+
+## Dockerize the application
+```shell script
+
+./mvnw package
+
+docker build -f src/main/docker/Dockerfile.jvm -t quarkus/accounts-jvm .
+
+then 
+docker run -i --rm -p 8080:8080 quarkus/accounts-jvm
+```
+## Run docker 
+
 
 ## Creating a native executable
 
